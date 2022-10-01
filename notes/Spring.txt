@@ -1,0 +1,110 @@
+Spring
+
+·初识Spring
+	·官网：spring.io
+	·Spring发展到今天已经形成了一种开发生态圈，Spring提供了若干个项目，每个项目用于完成特定的功能。
+	·目前从 Spring Freamework 开始学习
+	·然后从 Spring Boot 学习
+	·然后学 Spring Cloud
+
+·Spring Freamwork系统架构
+	Spring Freamwork是Spring生态圈中最基础的项目，是其他项目的根基
+	·Test：单元测试与集成测试
+	·Core Container:核心容器
+	·AOP：面向切面编程
+	·Aspects：AOP思想实现
+	
+	·Web：Web开发
+	
+	·Data Integration：数据集成
+	·Data Access：数据访问
+
+学习路线：
+	第一部分：核心容器
+			核心概念（Ioc/DI）
+			容器基本操作
+	第二部分：整合
+			整合数据层技术MyBatis
+	第三部分：AOP
+			核心概念
+			AOP基础操作
+			AOP实用开发
+	第四部分：事务
+			事务实用开发
+	第五部分：家族
+			SpringMVC
+			SpringBoot
+			SpringCloud
+
+核心概念：
+		·IoC/DI
+			·代码书写现状：
+				·耦合度偏高
+			·解决方案：
+				·使用对象时，在程序中不要主动使用new产生的对象，转换为由外部提供对象。
+			·IoC（Inversion of Control）控制反转
+				·对象的创建控制权由程序转移到外部，这种思想称为控制反转。
+			·DI（Dependency Injection）依赖注入
+				·在容器中建立bean与bean之间的依赖关系的整个过程，称为依赖注入
+			·目标：充分解耦
+				·使用IoC容器管理bean(IoC)
+				·在IoC容器内将有依赖关系的bean进行关系绑定(DI）
+			·最终效果
+				·使用对象时不仅可以直接从IoC容器中获取，并且获取到的bean已经绑定了所有的依赖关系
+		·Ioc容器
+			·Spring技术对IoC思想进行了实现
+			·Spring提供了一个容器，称为IoC容器，用来充当IoC思想中的“外部”。
+		·Bean
+			·Ioc容器负责对象的创建、初始化等一系列工作，被创建或被管理的对象在IoC容器中统称为Bean
+
+IoC入门案例思路分析
+1·管理什么？(Service与Dao)
+2·如何将被管理的对象告知IoC容器？(配置)
+3·被管理的对象交给IoC容器，如何获取到IoC容器？(接口)
+4·IoC容器得到后，如何从容器中获取bean？(接口方法)
+5·使用Spring导入哪些坐标？(pom.xml)
+
+IoC入门案例(xml版本)
+1·导入Spring坐标
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>5.2.10.RELEASE</version>
+    </dependency>
+
+2·定义Spring管理的类(接口)
+
+3·创建Spring配置文件，配置对应类作为Spring管理的bean
+	<bean id="BookDao" class="demo01.dao.impl.BookDaoImpl"/>
+    <bean id="BookService" class="demo01.service.impl.BookServiceImpl"/>
+
+4·初始化IoC容器(Spring核心容器/Spring容器)，通过容器获取bean
+
+
+DI入门案例思路分析
+1·基于IoC管理bean
+2·Service中使用new形式创建的Dao对象是否保留(否)
+3·Service中需要的Dao对象如何进入到Service中？(提供方法)
+4·Service与Dao间的关系如何描述？(配置)
+
+DI入门案例
+1·删除使用new形式创建的代码
+
+2·提供依赖对象对应的setter方法
+
+3·配置service与dao之间的关系
+    <bean id="BookDao" class="demo01.dao.impl.BookDaoImpl"/>
+    <bean id="BookService" class="demo01.service.impl.BookServiceImpl">
+        <!--7·配置service与dao的关系-->
+        <!--
+            property标签表示配置当前bean的属性
+            name属性表示拿一个具体的属性
+            ref属性表示参照哪一个bean
+        -->
+        <property name="bookDao" ref="BookDao"/>
+
+    </bean>
+
+
+
+

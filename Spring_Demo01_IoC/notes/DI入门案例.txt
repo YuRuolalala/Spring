@@ -1,0 +1,23 @@
+DI入门案例思路分析
+1·基于IoC管理bean
+2·Service中使用new形式创建的Dao对象是否保留(否)
+3·Service中需要的Dao对象如何进入到Service中？(提供方法)
+4·Service与Dao间的关系如何描述？(配置)
+
+DI入门案例
+1·删除使用new形式创建的代码
+
+2·提供依赖对象对应的setter方法
+
+3·配置service与dao之间的关系
+    <bean id="BookDao" class="demo01.dao.impl.BookDaoImpl"/>
+    <bean id="BookService" class="demo01.service.impl.BookServiceImpl">
+        <!--7·配置service与dao的关系-->
+        <!--
+            property标签表示配置当前bean的属性
+            name属性表示拿一个具体的属性
+            ref属性表示参照哪一个bean
+        -->
+        <property name="bookDao" ref="BookDao"/>
+
+    </bean>

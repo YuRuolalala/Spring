@@ -1,0 +1,24 @@
+IoC入门案例思路分析
+1·管理什么？(Service与Dao)
+2·如何将被管理的对象告知IoC容器？(配置)
+3·被管理的对象交给IoC容器，如何获取到IoC容器？(接口)
+4·IoC容器得到后，如何从容器中获取bean？(接口方法)
+5·使用Spring导入哪些坐标？(pom.xml)
+
+
+
+IoC入门案例(xml版本)
+1·导入Spring坐标
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>5.2.10.RELEASE</version>
+    </dependency>
+
+2·定义Spring管理的类(接口)
+
+3·创建Spring配置文件，配置对应类作为Spring管理的bean
+    <bean id="BookDao" class="demo01.dao.impl.BookDaoImpl"/>
+    <bean id="BookService" class="demo01.service.impl.BookServiceImpl"/>
+
+4·初始化IoC容器(Spring核心容器/Spring容器)，通过容器获取bean
