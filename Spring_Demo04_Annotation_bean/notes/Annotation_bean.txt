@@ -1,0 +1,38 @@
+·注解开发
+    ·注解开发定义bean
+        1·写的类上添加注解
+            ·@Component         通用
+                ·@Controller    一般用于控制层
+                ·@Service       一般用于业务层
+                ·@Repository    一般用于数据层
+           配置文件中这样弄
+            <context:component-scan base-package="dao"/>
+            <context:component-scan base-package="service"/>
+    ·纯注解开发
+        ·弄一个Config包，里面放一个SpringConfig类
+            加上注解
+                @Configuration
+                @ComponentScan({"dao","service","control"})
+                public class SpringConfig {
+                }
+        用到的类
+        AnnotationConfigApplicationContext
+        在一个类中引用其他的类作为自身属性的，不要用setter实例化
+        直接用构造方法就行了
+
+
+    ·bean作用范围
+        ·类上添加注解
+            @Scope("singleton")  单例
+            或
+            @Scope("prototype")  非单例
+    ·bean生命周期
+        ·方法上添加注解
+        @PostConstruct      //初始化
+        public void init(){
+            System.out.println("book dao init...");
+        }
+        @PreDestroy         //销毁前
+        public void destory(){
+            System.out.println("book dao destory...");
+        }

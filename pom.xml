@@ -12,6 +12,7 @@
         <module>Spring_Demo01_IoC</module>
         <module>Spring_Demo02_bean_lifecycle</module>
         <module>Spring_Demo03_DI</module>
+        <module>Spring_Demo04_Annotation_bean</module>
     </modules>
 
 
