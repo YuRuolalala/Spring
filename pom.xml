@@ -11,7 +11,9 @@
     <modules>
         <module>Spring_Demo01_IoC</module>
         <module>Spring_Demo02_bean_lifecycle</module>
+        <module>Spring_Demo03_DI</module>
     </modules>
+
 
 
 </project>
