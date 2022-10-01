@@ -17,9 +17,6 @@
                 }
         用到的类
         AnnotationConfigApplicationContext
-        在一个类中引用其他的类作为自身属性的，不要用setter实例化
-        直接用构造方法就行了
-
 
     ·bean作用范围
         ·类上添加注解

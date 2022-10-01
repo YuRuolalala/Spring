@@ -13,6 +13,7 @@
         <module>Spring_Demo02_bean_lifecycle</module>
         <module>Spring_Demo03_DI</module>
         <module>Spring_Demo04_Annotation_bean</module>
+        <module>Spring_Demo05_Annotation_dl</module>
     </modules>
 
 
