@@ -3,8 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="bookdao" class="dao.impl.BookDaoImpl"/>
-    <bean id="bookservice" class="service.impl.BookServiceImpl" scope="prototype">
+    <bean id="bookdao" class="dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy"/>
+    <bean id="bookservice" class="service.impl.BookServiceImpl" >
         <property name="bookDao" ref="bookdao"/>
 
     </bean>

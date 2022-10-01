@@ -105,6 +105,64 @@ DI入门案例
 
     </bean>
 
+·bean可以定义多个别名，使用,;或者空格分隔
+<beand id="bookDao" name="dao book bookDaoImpl" calss="dao.impl.BookDaoImpl">
+·这里bookDao，dao，book，bookDaoImpl都是指同一个bean
+·如果无法获取到bean,将会抛出 NoSuchBeanDefinitionException
 
+·默认情况下，spring提供的bean是单例的
+scope="singleton",如果要非单例的话,把singleton改为prototype
+·为什么bean默认为单例？
+1·减少新生成对象所造成的性能损耗
+2·减少jvm垃圾回收
+3·除了第一次获取bean之外，后续都是从缓存中获取，速度很快
+·会有什么问题么？
+·单例bean做不到线程安全，所有相关的请求都共享一个bean实例，所以这个bean如果有状态的话
+在并发场景下可能会出现先问题。
 
+·适合交给容器进行管理的bean
+    ·表现层对象
+    ·业务层对象
+    ·数据层对象
+    ·工具对象
+·不适合交给容器尽心管理的bean
+    ·封装实体的域对象
 
+·bean实例化
+    ·bean是如何创建的
+        ·bean本质上就是对象，创建bean使用构造方法完成的
+    ·实例化bean的三种方式
+        1·运用无参构造(无论公有私有都可以)
+        2·静态工厂(配置是配置工厂类名,然后加上factory-method="造对象的方法名")
+            <bean id="orderDao" class="factory.OrderDaoFactory" factory-method="getOrderDao"/>
+        3·实例工厂实例化Bean
+            <bean id="userFactory" class="factory.UserDaoFactory">
+            <bean id="userDao" factory-method="getUserDao" factory-bean="userFactory"/>
+        4·使用FactoryBean实例化bean
+            <bean id="userDao" class="factory.UserDaoFactoryBean"/>
+
+·bean生命周期
+    ·生命周期：从创建到消亡的完整过程
+    ·bean生命周期：bean从创建到销毁的整体过程
+        ·初始化容器
+            1·创建对象(内存分配)
+            2·执行构造方法
+            3·执行属性注入(set操作)
+            4·执行bean初始化方法
+        ·使用bean
+            1·执行业务操作
+        3·关闭/销毁容器
+            1·执行bean销毁方法
+                ·手工关闭容器
+                ·ClassPathXmlApplicationContext接口close()操作
+
+                ·注册关闭钩子，在虚拟机退出前先关闭容器再退出虚拟机
+                ·ClassPathXmlApplicationContext接口registerShutdownHook()操作
+    ·bean生命周期控制：在bean创建后到销毁前坐一些事情
+        ·配置
+            ·在对应类中写两个方法，在bean的配置中用init-method 和 destroy-method
+                <bean id="bookdao" class="dao.impl.BookDaoImpl" init-method="init" destroy-method="destroy"/>
+        ·接口
+            ·在对应类实现 InitializingBean, DisposableBean接口,实现
+            destroy()和afterPropertiesSet() 和 destroy()方法，
+            这俩就是初始化和销毁前的方法操作
