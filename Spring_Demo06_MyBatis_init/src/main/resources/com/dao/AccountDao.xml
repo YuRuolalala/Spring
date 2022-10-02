@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AccountDao">
+    <insert id="save">
+        insert into tbl_account(name,money)
+        values (#{name},#{money});
+    </insert>
+    <delete id="deleteById">
+        delete from tbl_account
+        where id=#{id};
+    </delete>
+
+    <select id="selectAll" resultType="com.pojo.Account">
+        select * from tbl_account;
+    </select>
+    <select id="selectByName" resultType="com.pojo.Account">
+        select * from tbl_account
+        where name=#{name};
+    </select>
+    <select id="selectById" resultType="com.pojo.Account">
+        select * from tbl_account
+        where id=#{id}
+    </select>
+</mapper>

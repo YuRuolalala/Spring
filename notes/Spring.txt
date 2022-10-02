@@ -241,8 +241,25 @@ scope="singleton",如果要非单例的话,把singleton改为prototype
             ·ClaaPathXmlApplicationContext
             ·FileSystemXmlApplicationContext
     ·bean相关
-
+        ·定义bean
+            ·bean标签
+                ·id属性
+                ·class属性
+        ·配置第三方bean
+            ·bean标签
+            ·静态工厂、实例工厂、FactoryBean
+        ·作用范围
+            ·scope属性
+        ·生命周期
+            ·标准接口
+            ·init-method
+            ·destroy-method
     ·依赖注入相关
+        ·setter注入(set方法)
+            ·引用/简单
+        ·构造器注入(构造方法)
+        ·自动装配
+
 
 ·注解开发
     ·注解开发定义bean
@@ -295,3 +312,28 @@ scope="singleton",如果要非单例的话,把singleton改为prototype
             ·properties内容加载
             ·在SpringConfig类上添加注解
             ·@PropertySource("jdbc.properties")  //跟上面一样，想写很多个要用大括号写数组，不能用通配符
+
+        ·第三方bean依赖注入
+            ·简单类型依赖注入，直接在成员变量上添加注解@Value
+            ·引用类型依赖注入，设置形参即可，容器会根据类属性自动装配对象
+
+·注解开发总结
+    ·定义bean
+        ·@Component
+            ·@Controller
+            ·@Service
+            ·@Repository
+        ·@ComponentScan
+    ·设置依赖注入
+        ·@Autowired
+            ·@Qualifier
+        ·@Value
+    ·配置第三方bean
+        ·@Bean
+    ·作用范围
+        ·@Scope
+    ·生命周期
+        @PostConstructor
+        @PreDestroy
+
+·Spring整合MyBatis

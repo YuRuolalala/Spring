@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Spring_Demo03_DI" />
+        <module name="Spring_Demo06_MyBatis_init" />
         <module name="Spring_Demo02_bean_lifecycle" />
-        <module name="Spring_Demo04_Annotation_bean" />
         <module name="Spring_Demo05_Annotation_dl" />
+        <module name="Spring_Demo03_DI" />
         <module name="Spring_Demo01_IoC" />
+        <module name="Spring_Demo04_Annotation_bean" />
       </profile>
     </annotationProcessing>
   </component>
