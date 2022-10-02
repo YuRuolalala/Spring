@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Spring_Demo06_MyBatis_init" />
         <module name="Spring_Demo02_bean_lifecycle" />
+        <module name="Spring_Demo07_MyBatis_conformity" />
         <module name="Spring_Demo05_Annotation_dl" />
         <module name="Spring_Demo03_DI" />
         <module name="Spring_Demo01_IoC" />
