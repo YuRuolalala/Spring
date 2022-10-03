@@ -6,12 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Spring_Demo10_Aop_password" />
         <module name="Spring_Demo06_MyBatis_init" />
+        <module name="Spring_Demo08_Aop_quickstart" />
+        <module name="Spring_Demo09_Aop_Mybatis" />
         <module name="Spring_Demo02_bean_lifecycle" />
         <module name="Spring_Demo07_MyBatis_conformity" />
         <module name="Spring_Demo05_Annotation_dl" />
         <module name="Spring_Demo03_DI" />
         <module name="Spring_Demo01_IoC" />
+        <module name="Spring_Demo11_Transfer_bank" />
         <module name="Spring_Demo04_Annotation_bean" />
       </profile>
     </annotationProcessing>
